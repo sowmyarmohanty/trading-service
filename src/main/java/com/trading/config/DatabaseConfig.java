@@ -10,17 +10,20 @@ import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
 @Configuration
 public class DatabaseConfig {
 
-    @Bean
-    public ConnectionFactoryInitializer initializer(ConnectionFactory connectionFactory) {
-        ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();
-        initializer.setConnectionFactory(connectionFactory);
+    // Disabled custom initializer since Spring Boot's built-in R2DBC initializer
+    // handles schema.sql and data.sql automatically when spring.sql.init.mode=always
+    
+    // @Bean
+    // public ConnectionFactoryInitializer initializer(ConnectionFactory connectionFactory) {
+    //     ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();
+    //     initializer.setConnectionFactory(connectionFactory);
 
-        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-        populator.addScript(new ClassPathResource("schema.sql"));
-        populator.addScript(new ClassPathResource("data.sql"));
+    //     ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+    //     populator.addScript(new ClassPathResource("schema.sql"));
+    //     populator.addScript(new ClassPathResource("data.sql"));
 
-        initializer.setDatabasePopulator(populator);
+    //     initializer.setDatabasePopulator(populator);
 
-        return initializer;
-    }
+    //     return initializer;
+    // }
 }
