@@ -1,6 +1,5 @@
 -- Insert sample users (password is 'password123' hashed with BCrypt)
--- Using MERGE to avoid duplicate key errors on re-initialization
-MERGE INTO users (id, username, email, password) KEY(username) VALUES
+INSERT INTO users (id, username, email, password) VALUES
 (1, 'john_trader', 'john@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMye1J8JqMqZqZ8qZ8qZ8qZ8qZ8qZ8qZ8qZ'),
 (2, 'jane_investor', 'jane@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMye1J8JqMqZqZ8qZ8qZ8qZ8qZ8qZ8qZ8qZ'),
 (3, 'bob_daytrader', 'bob@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMye1J8JqMqZqZ8qZ8qZ8qZ8qZ8qZ8qZ8qZ'),
